@@ -199,6 +199,13 @@ public class VentanaReloj extends JFrame implements MouseListener,Runnable{
 		
 	}
 	
+	/**
+	 * Cambia el color del display
+	 * <br> pre: El recurso debe ser distinto de null<\br>
+	 * <br> post: Cambia de color y muestra si el estado es true sino apretar la tecla iniciar<\br>
+	 * @param recurso: parametro en el cual se setea una clase que implementa I_Recurso
+	 */
+	
 	public void cambiarColor(I_Recursos recurso) {
 		this.recurso= recurso;
 		if (this.estado) {
@@ -229,6 +236,10 @@ public class VentanaReloj extends JFrame implements MouseListener,Runnable{
 		
 	}
 	
+	/**
+	 * Setea el estado a true , setea las imagenes de los separadores y inicia el hilo que es el mismo objeto
+	 */
+	
 	public void Inicia() {
 		this.panelSeparador1.setImagen(this.recurso.getSeparador());
 		this.panelSeparador2.setImagen(this.recurso.getSeparador());
@@ -236,6 +247,10 @@ public class VentanaReloj extends JFrame implements MouseListener,Runnable{
 		Thread hilo = new Thread(this);
 		hilo.start();
 	}
+	
+	/**
+	 *  Cambia el estado a false y saca las imagenes
+	 */
 	
 	public void Parar() {
 		this.panelHora1.setImagen(null);
@@ -249,6 +264,13 @@ public class VentanaReloj extends JFrame implements MouseListener,Runnable{
 		this.repaint();
 		this.estado=false;
 	}
+	
+	/**
+	 * Añade un controlador a la vista
+	 * <br>pre: controlador distinto de null<\b>
+	 * <br>post: Añadir todos los botones para que sean controlada la vista<\br>
+	 * @param controlador: parametro de tipo ActionListener, la cual controla la vista
+	 */
 
 	public void setControlador(ActionListener controlador) {
 		this.iniciarBoton.addActionListener(controlador);
